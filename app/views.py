@@ -39,7 +39,7 @@ def files():
 
 @app.route('/add', methods=['POST'])
 def add_entry():
-   """add a file"""
+    """add a file"""
     title = request.form['title']
     file = request.files['file']                
     filename = file.filename
@@ -50,6 +50,20 @@ def add_entry():
     #g.db.commit()
     #flash('New entry was successfully posted')
     #return redirect(url_for('show_entries'))
+    
+@app.route("/filelisting")
+def filelisting():
+    rootdir = os.getcwd()
+
+    print rootdir
+
+    for subdir, dirs, files in os.walk(rootdir 
+
+                                        + '/my_app/.git'):
+
+        for file in files:
+
+            print os.path.join(subdir, file)
 
 @app.route('/login', methods=['POST','GET'])
 def login():
