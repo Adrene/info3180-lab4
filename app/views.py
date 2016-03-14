@@ -39,11 +39,11 @@ def files():
 
 @app.route('/add', methods=['POST'])
 def add_entry():
-    """add a file"""
+   """add a file"""
     title = request.form['title']
-    file = request.files['file']
+    file = request.files['file']                
     filename = file.filename
-    file.save(os.path.join("filefolder", filename))
+    file.save(os.path.join(app.config["static/uploads"], filename))
     return render_template("files.html",title=title)
     #g.db.execute('insert into entries (title, text) values (?, ?)',
     #             [title, filename])
